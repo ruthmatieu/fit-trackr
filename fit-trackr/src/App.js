@@ -1,31 +1,58 @@
 import React from 'react';
 import './stylesheets/App.css';
+import { Switch, Route, Link } from "react-router-dom";
 
 //components
-import Hero from './components/HeroSection';
-import Landing from './components/Landing';
+import Homepage from './components/Homepage';
+import SignIn from './components/UserAccount/SignIn';
+import About from './components/About';
+import Contact from './components/Contact';
 import Dashboard from './components/UserAccount/Dashboard';
 
+//images
+import logo from './images/logo.png'
+
 function App() {
+
+  //color pallette
+  const lightblue = '#E1F2F9';
+  const blue = '#2F98BA';
+  const darkblue = '#081E36';
+  const white = '#FFFFFF';
+  const orange = '#F77741';
+  const gray = 'gray';
+
+  const button = {
+    padding: '10px 20px',
+    backgroundColor: blue,
+    color: white,
+    borderRadius: '6px',
+    border: 'none',
+    marginLeft: '1rem'
+}
   return (
     <div className="App">
-      <nav style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#E1F2F9', padding: '2rem 4rem'}}>
+      <nav style={{display: 'flex', justifyContent: 'space-between', backgroundColor: '#E1F2F9', padding: '1rem 4rem', }}>
         <div>
-          FitTrackr Logo
+          <Link to='/'><img src={logo} alt='logo' style={{width: '125px'}}/></Link>
         </div>
         <div style={{display: 'flex'}}>
-          <li style={{listStyle: 'none', padding: '0 1rem'}}>Home</li>
-          <li style={{listStyle: 'none', padding: '0 1rem'}}>Dashboard</li>
-          <li style={{listStyle: 'none', padding: '0 1rem'}}>About</li>
-          <li style={{listStyle: 'none', padding: '0 1rem'}}>Contact</li>
-          <button style={{marginLeft: '1rem'}}>Sign In</button>
+          <Link to='/' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Home</Link>
+          <Link to='/my-account' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Dashboard</Link>
+          <Link to='/about' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>About</Link>
+          <Link to='/contact' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Contact</Link>
+          <Link to='/sign-in'><button style={button}>Sign In</button></Link>
         </div>
       </nav>
-      <Hero/>
-      <Landing/>
 
-      {/* make sure to remove these components */}
-      <Dashboard/>
+      <Switch>
+        <Route exact path="/" component={Homepage}/>
+        <Route path="/my-account" component={Dashboard}/>
+        <Route path="/about" component={About}/>
+        <Route path="/contact" component={Contact}/>
+        <Route path="sign-in" component={SignIn}/>
+      </Switch>
+      
     </div>
   );
 }
