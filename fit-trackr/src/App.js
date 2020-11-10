@@ -4,10 +4,11 @@ import { Switch, Route, Link } from "react-router-dom";
 
 //components
 import Homepage from './components/Homepage';
-import SignIn from './components/UserAccount/SignIn';
+import SignIn from './components/SignIn';
 import About from './components/About';
 import Contact from './components/Contact';
 import Dashboard from './components/UserAccount/Dashboard';
+import Database from './components/UserAccount/Database';
 
 //images
 import logo from './images/logo.png'
@@ -50,9 +51,9 @@ function App() {
         <Route path="/my-account" component={Dashboard}/>
         <Route path="/about" component={About}/>
         <Route path="/contact" component={Contact}/>
-        <Route path="sign-in" component={SignIn}/>
+        <Route path="/sign-in" component={SignIn}/>
+        <Route path="/search" component={Database}/>
       </Switch>
-      
     </div>
   );
 }

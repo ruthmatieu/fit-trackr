@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 //feature images
 import landing from '../images/landing-image.png';
@@ -12,7 +13,7 @@ const Landing = () => {
     const white = '#FFFFFF';
     const orange = '#F77741';
     const gray = 'gray';
-    const offwhite = '#FCFAFE'
+    const offwhite = '#FCFAFE';
 
     const button = {
         padding: '13px 25px',
@@ -67,7 +68,7 @@ const Landing = () => {
                             You can plan the meals you want to eat, look up specific items to find their 
                             nutritional value. Set your macros and fitness targets to reach your desired goals.
                         </p>
-                        <button style={button}>Start Tracking</button>
+                        <Link to="/sign-in"><button style={button}>Start Tracking</button></Link>
                     </div>
                 </div>
             </div>

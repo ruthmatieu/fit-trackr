@@ -1,65 +1,78 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { Link } from "react-router-dom";
+import axios from 'axios';
+import Data from './Data'
 import { AiFillHome } from 'react-icons/ai';
 import { IoMdSettings, IoMdAddCircle } from 'react-icons/io';
 import { MdAccountCircle } from 'react-icons/md';
 import { GiOrange } from 'react-icons/gi';
 import { GoGraph } from 'react-icons/go';
-import { Link } from "react-router-dom";
-//images
-import logo from '../../images/logo.png';
+// import { Link } from "react-router-dom";
+
+//feature images
 import hero from '../../images/dashboard-hero.png';
 import defautlImage from '../../images/default-profile-image.png'
 
-//components
-import Database from '../UserAccount/Database';
-import Diary from '../UserAccount/Diary';
+const Database = () => {
+    
+    //color pallette
+    const lightblue = '#E1F2F9';
+    const blue = '#2F98BA';
+    const skyblue = '#97D4E7'
+    const darkblue = '#081E36';
+    const white = '#FFFFFF';
+    const orange = '#F77741';
+    const gray = 'gray';
+    const lightgray = '#FCFBFF';
+    const offwhite = '#FCFAFE';
 
-//home, profile, diary(list, food), progress, settings
-const Dashboard = () => {
-
-     //color pallette
-     const lightblue = '#E1F2F9';
-     const skyblue = '#97D4E7'
-     const blue = '#2F98BA';
-     const darkblue = '#081E36';
-     const white = '#FFFFFF';
-     const lightgray = '#FCFBFF';
-     const gray = 'gray';
-     const orange = '#F77741';
-     const offwhite = '#FCFAFE';
-
-     const heading = {
+    const heading = {
         color: darkblue, 
      }
 
-     const paragraph = {
-        color: gray, 
-        lineHeight: '1.6rem'
-     }
+    const key = 'm8RppA8229DXhFuvnkkgeyv76ixlpSCalwX37v1u';
 
-     //hover link effects
-     function hover() {
+    const [data, setData] = useState([]);
+    //2. state for search bar
+    const [search, setSearch] = useState('');
+    //3. only when search is clicked is when we fetch the data
+    const [submit, setSubmit] = useState('chicken')
 
-     }
+    useEffect(() => {
+        axios
+            .get(`https://api.nal.usda.gov/fdc/v1/foods/search?api_key=${key}&query=${submit}&pageSize=25`)
+            .then(res => {
+                console.log(res.data.foods);
+                setData(res.data.foods);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [submit])
+
+    const changeHandler = e => {
+        setSearch(e.target.value) //value of user input
+            // console.log(search)//just to see results
+    }
+        
+    const submitSearch = e => {
+        e.preventDefault();
+        setSubmit(search);
+        setSearch('')//refreshes search once submitted
+    }
 
     return (
-        <div className="App" style={{display: 'flex', padding: '10px 0 0 10px', backgroundColor: lightgray}}>
+        <div >
+
+            <div className="App" style={{display: 'flex', padding: '10px 0 0 10px', backgroundColor: lightgray}}>
 
             <div style={{width: '80%'}}>
                 <div className="status" style={{display: 'flex', justifyContent: 'space-between'}}>
                     <div>
                         <p style={heading}>Monday, October 9</p>
                     </div>
-                    <div className="search">
-                        <form onSubmit={Database}>
-                            <input
-                                type='text'
-                                name='search'
-                                placeholder='search'
-                            />
-                            <button>Search</button>
-                        </form>
-                        
+                    <div className="">
+                        <p>Alanna Civil</p>
                     </div>    
                 </div>
                 <div style={{display: 'flex'}}>
@@ -107,29 +120,32 @@ const Dashboard = () => {
                                 <img src={hero} alt='' style={{width: '450px', fontWeight: '900', position: 'relative', top: '-50px'}}/>
                             </div>
                         </div>
-                        <div style={{display: 'flex', backgroundColor: white, marginLeft: '10px', marginTop: '10px', borderRadius: '15px', height: '80vh', width: '1068px'}}>
-                            <div>
-                                <div>
-                                    <h3 style={{textAlign: 'left', padding: '0 50px', color: darkblue}}>Breakfast</h3>
+                        <div style={{backgroundColor: white, marginLeft: '10px', marginTop: '10px', borderRadius: '15px', height: '80vh', width: '1068px'}}>
+                            <form onSubmit={submitSearch}>
+                                <input
+                                    type='text'
+                                    name='search'
+                                    placeholder='search food or brand name'
+                                    value={search}
+                                    onChange={changeHandler}
+                                />
+                                <button>Sarch</button>
+                            </form>
 
-                                </div>
-                                <div>
-                                    <h5>Snack</h5>
-                                </div>
-                                <div>
-                                    <h5>Lunch</h5>
-                                </div>
-                                <div>
-                                    <h5>Snack</h5>
-                                </div>
-                                <div>
-                                    <h5>Dinner</h5>
-                                </div>
+                            <div style={{display: 'flex', justifyContent: 'space-around', flexWrap: 'wrap', padding: '0 50px'}}>
+                                {data.map(item => (
+                                    <Data
+                                    key={item.fdcId}
+                                    title={item.lowercaseDescription}
+                                    // calories={Math.round(item.calories)}
+                                    brand={item.brandOwner}
+                                    // ingredients={item.recipe.ingredients}
+                                    />
+                                    ))
+                                }
                             </div>
                         </div>
-                        {/* <Database/> */}
                     </div>
-                    
                 </div>
             </div>
 
@@ -141,7 +157,9 @@ const Dashboard = () => {
                 <p>Weight: 125lbs</p>
             </div>
         </div>
+            
+        </div>
     )
 }
 
-export default Dashboard;
+export default Database;

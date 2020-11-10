@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 //images
 import hero from '../images/icon-slider.png';
@@ -44,8 +45,8 @@ const HeroSection = () => {
                         schedule your days to be more productive.
                     </p>
                     <div className="hero-cta">
-                        <button style={blueButton}>Get Started</button>
-                        <button style={whiteButton}>Watch Video</button>
+                        <Link to="/sign-in"><button style={blueButton}>Get Started</button></Link>
+                        <Link to="/about"><button style={whiteButton}>Learn More</button></Link>
                     </div>
 
                     <div>
