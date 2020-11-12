@@ -5,3 +5,18 @@
 .data-container {
   background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
 }
+
+.feature-div {
+  -webkit-box-shadow: 7px 5px 30px -1px rgba(0,0,0,0.32); 
+  box-shadow: 7px 5px 30px -1px rgba(0,0,0,0.32);
+}
+/*TABLE*/
+
+.tg  {border-collapse:collapse;border-spacing:0;margin:0px auto;}
+.tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px;
+  font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;}
+.tg .tg-ul38{position:-webkit-sticky;position:sticky;text-align:left;top:-1px;vertical-align:top;will-change:transform}
+@media screen and (max-width: 767px) {.tg {width: auto !important;}.tg col {width: auto !important;}.tg-wrap {overflow-x: auto;-webkit-overflow-scrolling: touch;margin: auto 0px;}}
+

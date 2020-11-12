@@ -82,7 +82,7 @@ const Database = () => {
                             <img src={logo} alt="logo" style={{width: '50px'}}/>
                         </div> */}
                         <div style={{padding: '10px 0'}}>
-                        <Link to='/my-account'><AiFillHome style={{color: darkblue, width: '2rem'}} size/></Link>
+                        <Link to='/dashboard'><AiFillHome style={{color: darkblue, width: '2rem'}} size/></Link>
                         </div>
                         <div style={{padding: '10px 0'}}>
                             <MdAccountCircle style={{color: darkblue, width: '2rem'}} size/>

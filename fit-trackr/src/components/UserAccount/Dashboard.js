@@ -69,7 +69,7 @@ const Dashboard = () => {
                             <img src={logo} alt="logo" style={{width: '50px'}}/>
                         </div> */}
                         <div style={{padding: '10px 0'}}>
-                        <Link to='/my-account'><AiFillHome style={{color: darkblue, width: '2rem'}} size/></Link>
+                        <Link to='/dashboard'><AiFillHome style={{color: darkblue, width: '2rem'}} size/></Link>
                         </div>
                         <div style={{padding: '10px 0'}}>
                             <MdAccountCircle style={{color: darkblue, width: '2rem'}} size/>
@@ -92,7 +92,7 @@ const Dashboard = () => {
                         <div className="welcome" style={{display: 'flex', backgroundColor: skyblue, marginLeft: '10px', borderRadius: '15px', height: '200px', width: '1068px'}}>
                             <div style={{width: '45%', display: 'grid', placeItems: 'center'}}>
                                 <div>
-                                    <h2>Welcome, Alanna</h2>
+                                    <h2>Good afternoon, Alanna</h2>
                                     <p>You have <span style={{color: orange}}>1,500</span> calories left to track.</p>
                                 </div> 
                             </div>
@@ -108,22 +108,79 @@ const Dashboard = () => {
                             </div>
                         </div>
                         <div style={{display: 'flex', backgroundColor: white, marginLeft: '10px', marginTop: '10px', borderRadius: '15px', height: '80vh', width: '1068px'}}>
-                            <div>
+                            <div style={{textAlign: 'left', padding: '0 50px'}}>
+                                {/* <div className="tg-wrap">
+                                    <table className="tg" style={{display: 'flex'}}>
+                                        <thead>
+                                            <tr>
+                                                <th className="tg-ul38">Pizza bites</th>
+                                            </tr>
+                                        </thead>
+                                        <thead>Calories (kcal)
+                                            <tr>
+                                                <th className="tg-ul38">123</th>
+                                            </tr>
+                                        </thead>
+                                        <thead>Carbs (g)
+                                            <tr>
+                                                <th className="tg-ul38">123</th>
+                                            </tr>
+                                        </thead>
+                                        <thead>Protein(g)
+                                            <tr>
+                                                <th className="tg-ul38">123</th>
+                                            </tr>
+                                        </thead>
+                                        <thead>Fat(g)
+                                            <tr>
+                                                <th className="tg-ul38">123</th>
+                                            </tr>
+                                        </thead>
+                                    </table>
+                                </div> */}
                                 <div>
-                                    <h3 style={{textAlign: 'left', padding: '0 50px', color: darkblue}}>Breakfast</h3>
-
+                                    <div style={{display: 'flex', justifyContent:'space-around', backgroundColor:''}}>
+                                        <h3 style={{color: darkblue}}>Breakfast</h3>
+                                        <h5 style={{padding: '0 10px'}}>Calories (kcal)</h5>
+                                        <h5>Carbs (g)</h5>
+                                        <h5>Protein (g)</h5>
+                                        <h5>Fats (g)</h5>
+                                    </div>
+                                    <div style={{padding: '0 0 0 50px'}}>
+                                        <p>5 bacon strips</p>
+                                        <p>Eggs (over easy)</p>
+                                        <p>Orange juice</p>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h5>Snack</h5>
+                                    <h3 style={{color: darkblue}}>Snack</h3>
+                                    <div style={{padding: '0 0 0 50px'}}>
+                                        <p>Pizza bites</p>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h5>Lunch</h5>
+                                    <h3 style={{color: darkblue}}>Lunch</h3>
+                                    <div style={{padding: '0 0 0 50px'}}>
+                                        <p>Turkey sandwhich</p>
+                                        <p>Nature Valley granola bar</p>
+                                        <p>Small garden salad</p>
+                                        <p>Gatorade</p>
+                                    </div>
                                 </div>
                                 <div>
-                                    <h5>Snack</h5>
+                                    <h3 style={{color: darkblue}}>Snack</h3>
+                                    <div style={{padding: '0 0 0 50px'}}>
+                                        <p>Sunships Original</p>
+                                    </div>
                                 </div>
                                 <div>
                                     <h5>Dinner</h5>
+                                    <div style={{padding: '0 0 0 50px'}}>
+                                        <p>3oz steak</p>
+                                        <p>Asparagus</p>
+                                        <p>loaded potatoes</p>
+                                        <p>Cranberry juice</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +190,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
-            <div style={{width: '20%', height: '100vh', paddingTop: '50px', marginLeft: '10px', borderRadius: '15px 0 0 15px', backgroundColor: white}}>
+            <div style={{width: '20%', height: '100vh', paddingTop: '50px', marginLeft: '10px', borderRadius: '15px 0 0 15px', backgroundColor: blue}}>
                 <img src={defautlImage} alt="profile image" style={{width: '130px', borderRadius: '50%', border: '5px solid orange'}}/>
                 <h4>Alanna Civil</h4>
                 <h6>@alannacivil</h6>

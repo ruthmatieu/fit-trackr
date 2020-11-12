@@ -9,9 +9,13 @@ import About from './components/About';
 import Contact from './components/Contact';
 import Dashboard from './components/UserAccount/Dashboard';
 import Database from './components/UserAccount/Database';
+import Register from './components/Register';
+import PrivateRoute from './components/PrivateRoute';
+import ErrorPage from './components/ErrorPage';
 
 //images
 import logo from './images/logo.png'
+
 
 function App() {
 
@@ -39,7 +43,7 @@ function App() {
         </div>
         <div style={{display: 'flex'}}>
           <Link to='/' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Home</Link>
-          <Link to='/my-account' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Dashboard</Link>
+          <Link to='/dashboard' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Dashboard</Link>
           <Link to='/about' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>About</Link>
           <Link to='/contact' style={{textDecoration: 'none', padding: '0 1rem', color: `${darkblue}`, }}>Contact</Link>
           <Link to='/sign-in'><button style={button}>Sign In</button></Link>
@@ -48,11 +52,14 @@ function App() {
 
       <Switch>
         <Route exact path="/" component={Homepage}/>
-        <Route path="/my-account" component={Dashboard}/>
         <Route path="/about" component={About}/>
         <Route path="/contact" component={Contact}/>
-        <Route path="/sign-in" component={SignIn}/>
+        <Route path="/register" component={Register}/>
         <Route path="/search" component={Database}/>
+        <Route path="/sign-in" component={SignIn}/>
+        <PrivateRoute exact path="/" component={Dashboard}/>
+        <Route path="/error" component={ErrorPage}/>
+        <Route component={Dashboard} />
       </Switch>
     </div>
   );

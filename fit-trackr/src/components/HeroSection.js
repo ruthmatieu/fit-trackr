@@ -45,7 +45,7 @@ const HeroSection = () => {
                         schedule your days to be more productive.
                     </p>
                     <div className="hero-cta">
-                        <Link to="/sign-in"><button style={blueButton}>Get Started</button></Link>
+                        <Link to="/register"><button style={blueButton}>Get Started</button></Link>
                         <Link to="/about"><button style={whiteButton}>Learn More</button></Link>
                     </div>
 
@@ -57,7 +57,10 @@ const HeroSection = () => {
 
             <div className="graphics" style={{width: '50%', display: 'grid', placeItems: 'center'}}>
                 {/* include here screenshots of app layout and graphs */}
-                <img src={image} alt="" style={{width: '500px'}}/>
+                <div style={{width: '100%'}}>
+                    <img src={image} alt="" style={{width: '600px'}}/>
+                </div>
+                
             </div>
             
         </div>
